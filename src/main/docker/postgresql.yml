@@ -1,0 +1,11 @@
+version: '2'
+services:
+  locadorapassatempoapi-postgresql:
+    image: postgres:12.1
+    # volumes:
+    #     - ~/volumes/jhipster/locadorapassatempoapi/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=locadorapassatempoapi
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432
