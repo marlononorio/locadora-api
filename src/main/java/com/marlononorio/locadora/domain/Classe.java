@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -25,4 +26,13 @@ public class Classe implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CLASSE")
     @SequenceGenerator(name = "SQ_CLASSE", sequenceName = "SQ_CLASSE", allocationSize = 1)
     private Long id;
+
+    @Column(name = "NOME", nullable = false)
+    private String nome;
+
+    @Column(name = "VALOR", nullable = false)
+    private Double valor;
+
+    @Column(name = "DATA_DEVOLUCAO", nullable = false)
+    private LocalDateTime dtDevolucao;
 }

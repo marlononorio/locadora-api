@@ -25,4 +25,7 @@ public class Ator implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ATOR")
     @SequenceGenerator(name = "SQ_ATOR", sequenceName = "SQ_ATOR", allocationSize = 1)
     private Long id;
+
+    @Column(name = "NOME", nullable = false)
+    private String nome;
 }

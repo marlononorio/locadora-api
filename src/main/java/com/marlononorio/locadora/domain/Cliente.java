@@ -8,14 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "TB_CLIENTE")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,4 +28,16 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CLIENTE")
     @SequenceGenerator(name = "SQ_CLIENTE", sequenceName = "SQ_CLIENTE", allocationSize = 1)
     private Long id;
+
+    @Column(name = "NOME")
+    private String nome;
+
+    @Column(name = "DATA_NASCIMENTO")
+    private LocalDateTime dtNascimento;
+
+    @Column(name = "SEXO")
+    private String sexo;
+
+    @Column(name = "STATUS")
+    private Boolean status;
 }

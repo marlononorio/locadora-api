@@ -25,4 +25,7 @@ public class Diretor implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_DIRETOR")
     @SequenceGenerator(name = "SQ_DIRETOR", sequenceName = "SQ_DIRETOR", allocationSize = 1)
     private Long id;
+
+    @Column(name = "NOME", nullable = false)
+    private String nome;
 }
