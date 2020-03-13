@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -51,4 +52,17 @@ public class Locacao implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_CLIENTE", nullable = false)
     private Cliente cliente;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Locacao locacao = (Locacao) o;
+        return Objects.equals(id, locacao.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
