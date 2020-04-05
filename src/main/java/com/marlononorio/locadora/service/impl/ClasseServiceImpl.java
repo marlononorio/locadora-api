@@ -27,6 +27,7 @@ public class ClasseServiceImpl implements BaseService<ClasseDTO> {
 
     @Override
     public ClasseDTO save(ClasseDTO dto) {
+        log.debug("Request to save Classe : {}", dto);
         Classe entity = classeMapper.toEntity(dto);
         entity = classeRepository.save(entity);
         return classeMapper.toDto(entity);
@@ -34,12 +35,14 @@ public class ClasseServiceImpl implements BaseService<ClasseDTO> {
 
     @Override
     public void delete(Long id) {
+        log.debug("Request to delete Classe : {}", id);
         classeRepository.deleteById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<ClasseDTO> findById(Long id) {
+        log.debug("Request to get Classe : {}", id);
         return classeRepository.findById(id)
             .map(classeMapper::toDto);
     }

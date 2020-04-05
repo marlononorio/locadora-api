@@ -27,7 +27,7 @@ public class AtorServiceImpl implements BaseService<AtorDTO> {
 
     @Override
     public AtorDTO save(AtorDTO ator) {
-        log.debug("Request to save Ncm : {}", ator);
+        log.debug("Request to save Ator : {}", ator);
         Ator entity = atorMapper.toEntity(ator);
         entity = atorRepository.save(entity);
         return atorMapper.toDto(entity);
@@ -35,12 +35,14 @@ public class AtorServiceImpl implements BaseService<AtorDTO> {
 
     @Override
     public void delete(Long id) {
+        log.debug("Request to delete Ator : {}", id);
         atorRepository.deleteById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<AtorDTO> findById(Long id) {
+        log.debug("Request to get Ator : {}", id);
         return atorRepository.findById(id)
             .map(atorMapper::toDto);
     }
