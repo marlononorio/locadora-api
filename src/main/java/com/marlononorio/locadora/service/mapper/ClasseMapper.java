@@ -4,9 +4,6 @@ import com.marlononorio.locadora.domain.Classe;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {})
-public interface ClasseMapper {
-    Classe toEntity(ClasseDTO dto);
-
-    ClasseDTO toDto(Classe entity);
+@Mapper(componentModel = "spring")
+public interface ClasseMapper extends BaseMapper<Classe, ClasseDTO>{
 }
