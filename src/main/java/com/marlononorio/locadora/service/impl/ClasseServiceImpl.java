@@ -4,7 +4,7 @@ import com.marlononorio.locadora.domain.Classe;
 import com.marlononorio.locadora.repository.ClasseRepository;
 import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
-import com.marlononorio.locadora.service.mapper.BaseMapper;
+import com.marlononorio.locadora.service.mapper.ClasseMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class ClasseServiceImpl implements BaseService<ClasseDTO> {
     private final Logger log = LoggerFactory.getLogger(AtorServiceImpl.class);
 
     private final ClasseRepository classeRepository;
-    private final BaseMapper<Classe, ClasseDTO> classeMapper;
+    private final ClasseMapper classeMapper;
 
     @Override
     public ClasseDTO save(ClasseDTO dto) {

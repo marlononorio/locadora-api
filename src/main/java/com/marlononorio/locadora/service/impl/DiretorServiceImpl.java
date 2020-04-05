@@ -4,7 +4,7 @@ import com.marlononorio.locadora.domain.Diretor;
 import com.marlononorio.locadora.repository.DiretorRepository;
 import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.DiretorDTO;
-import com.marlononorio.locadora.service.mapper.BaseMapper;
+import com.marlononorio.locadora.service.mapper.DiretorMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class DiretorServiceImpl implements BaseService<DiretorDTO> {
     private final Logger log = LoggerFactory.getLogger(AtorServiceImpl.class);
 
     private final DiretorRepository diretorRepository;
-    private final BaseMapper<Diretor, DiretorDTO> diretorMapper;
+    private final DiretorMapper diretorMapper;
 
     @Override
     public DiretorDTO save(DiretorDTO diretor) {
