@@ -28,35 +28,43 @@ import java.util.Set;
 public class Titulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String ID = "ID_TITULO";
+    private static final String NOME = "NOME";
+    private static final String ANO = "ANO";
+    private static final String SINOPSE = "SINOPSE";
+    private static final String CATEGORIA = "CATEGORIA";
+    private static final String ID_DIRETOR = "ID_DIRETOR";
+    private static final String ID_CLASSE = "ID_CLASSE";
+    private static final String SQ_TITULO = "SQ_TITULO";
 
     @Id
-    @Column(name = "TB_TITULO")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TITULO")
-    @SequenceGenerator(name = "SQ_TITULO", sequenceName = "SQ_TITULO", allocationSize = 1)
+    @Column(name = ID)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SQ_TITULO)
+    @SequenceGenerator(name = SQ_TITULO, sequenceName = SQ_TITULO, allocationSize = 1)
     private Long id;
 
-    @Column(name = "NOME", nullable = false)
+    @Column(name = NOME, nullable = false)
     private String nome;
 
-    @Column(name = "ANO", nullable = false)
+    @Column(name = ANO, nullable = false)
     private String ano;
 
-    @Column(name = "SINOPSE", nullable = false)
+    @Column(name = SINOPSE, nullable = false)
     private String sinopse;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "CATEGORIA")
+    @Column(name = CATEGORIA)
     private TipoCategoriaEnum categoria;
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<Ator> atores;
 
     @ManyToOne
-    @JoinColumn(name = "ID_DIRETOR", nullable = false)
+    @JoinColumn(name = ID_DIRETOR, nullable = false)
     private Diretor diretor;
 
     @ManyToOne
-    @JoinColumn(name = "ID_CLASSE", nullable = false)
+    @JoinColumn(name = ID_CLASSE, nullable = false)
     private Classe classe;
 
     @Override

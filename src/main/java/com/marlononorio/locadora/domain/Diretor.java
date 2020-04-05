@@ -20,14 +20,17 @@ import java.util.Objects;
 public class Diretor implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String ID = "ID_DIRETOR";
+    private static final String NOME = "NOME";
+    private static final String SQ_DIRETOR = "SQ_DIRETOR";
 
     @Id
-    @Column(name = "TB_DIRETOR")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_DIRETOR")
-    @SequenceGenerator(name = "SQ_DIRETOR", sequenceName = "SQ_DIRETOR", allocationSize = 1)
+    @Column(name = ID)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SQ_DIRETOR)
+    @SequenceGenerator(name = SQ_DIRETOR, sequenceName = SQ_DIRETOR, allocationSize = 1)
     private Long id;
 
-    @Column(name = "NOME", nullable = false)
+    @Column(name = NOME, nullable = false)
     private String nome;
 
     @Override

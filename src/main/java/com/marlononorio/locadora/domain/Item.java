@@ -26,22 +26,27 @@ import java.util.Objects;
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String ID = "ID_ITEM";
+    private static final String DATA_AQUISICAO = "DATA_AQUISICAO";
+    private static final String TIPO = "TIPO";
+    private static final String ID_TITULO = "ID_DIRETOR";
+    private static final String SQ_ITEM = "SQ_ITEM";
 
     @Id
-    @Column(name = "TB_ITEM")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ITEM")
-    @SequenceGenerator(name = "SQ_ITEM", sequenceName = "SQ_ITEM", allocationSize = 1)
+    @Column(name = ID)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SQ_ITEM)
+    @SequenceGenerator(name = SQ_ITEM, sequenceName = SQ_ITEM, allocationSize = 1)
     private Long id;
 
-    @Column(name = "NOME")
+    @Column(name = DATA_AQUISICAO)
     private LocalDateTime dtAquisicao;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "TIPO")
+    @Column(name = TIPO)
     private TipoItemEnum tipo;
 
     @ManyToOne
-    @JoinColumn(name = "ID_TITULO", nullable = false)
+    @JoinColumn(name = ID_TITULO, nullable = false)
     private Titulo titulo;
 
     @Override

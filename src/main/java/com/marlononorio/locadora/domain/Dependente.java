@@ -19,13 +19,14 @@ import javax.persistence.Table;
 @Table(name = "TB_DEPENDENTE")
 public class Dependente extends Cliente{
 
-    private static final String ID_SOCIO = "SOCIO";
+    private static final String ID_SOCIO = "ID_SOCIO";
     private static final String ID_DEPENDENTE = "ID_DEPENDENTE";
+    private static final String SQ_DEPENDENTE = "SQ_DEPENDENTE";
 
     @Id
     @Column(name = ID_DEPENDENTE)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CLIENTE")
-    @SequenceGenerator(name = "SQ_CLIENTE", sequenceName = "SQ_CLIENTE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SQ_DEPENDENTE)
+    @SequenceGenerator(name = SQ_DEPENDENTE, sequenceName = SQ_DEPENDENTE, allocationSize = 1)
     private Long id;
 
     @ManyToOne

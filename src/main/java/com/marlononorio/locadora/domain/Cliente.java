@@ -19,7 +19,6 @@ import java.util.Set;
 public abstract class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final String ID = "ID";
     private static final String NOME = "NOME";
     private static final String DATA_NASCIMENTO = "DATA_NASCIMENTO";
     private static final String SEXO = "SEXO";

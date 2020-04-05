@@ -20,12 +20,13 @@ public class Socio extends Cliente{
     private static final String CPF = "CPF";
     private static final String ENDERECO = "ENDERECO";
     private static final String TELEFONE = "TELEFONE";
-    private static final String ID_SOCIO = "SOCIO";
+    private static final String ID_SOCIO = "ID_SOCIO";
+    private static final String SQ_SOCIO = "SQ_SOCIO";
 
     @Id
     @Column(name = ID_SOCIO)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CLIENTE")
-    @SequenceGenerator(name = "SQ_CLIENTE", sequenceName = "SQ_CLIENTE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SQ_SOCIO)
+    @SequenceGenerator(name = SQ_SOCIO, sequenceName = SQ_SOCIO, allocationSize = 1)
     private Long id;
 
     @Column(name = CPF)

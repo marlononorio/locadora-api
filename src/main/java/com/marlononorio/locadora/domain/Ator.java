@@ -20,14 +20,16 @@ import java.util.Objects;
 public class Ator implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String ID = "ID_ATOR";
+    private static final String NOME = "NOME";
 
     @Id
-    @Column(name = "ID_ATOR")
+    @Column(name = ID)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ATOR")
     @SequenceGenerator(name = "SQ_ATOR", sequenceName = "SQ_ATOR", allocationSize = 1)
     private Long id;
 
-    @Column(name = "NOME", nullable = false)
+    @Column(name = NOME, nullable = false)
     private String nome;
 
     @Override

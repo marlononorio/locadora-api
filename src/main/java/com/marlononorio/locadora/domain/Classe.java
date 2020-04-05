@@ -21,20 +21,25 @@ import java.util.Objects;
 public class Classe implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String ID = "ID_CLASSE";
+    private static final String NOME = "NOME";
+    private static final String VALOR = "VALOR";
+    private static final String DATA_DEVOLUCAO = "DATA_DEVOLUCAO";
+    private static final String SQ_CLASSE = "SQ_CLASSE";
 
     @Id
-    @Column(name = "TB_CLASSE")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_CLASSE")
-    @SequenceGenerator(name = "SQ_CLASSE", sequenceName = "SQ_CLASSE", allocationSize = 1)
+    @Column(name = ID)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SQ_CLASSE)
+    @SequenceGenerator(name = SQ_CLASSE, sequenceName = SQ_CLASSE, allocationSize = 1)
     private Long id;
 
-    @Column(name = "NOME", nullable = false)
+    @Column(name = NOME, nullable = false)
     private String nome;
 
-    @Column(name = "VALOR", nullable = false)
+    @Column(name = VALOR, nullable = false)
     private Double valor;
 
-    @Column(name = "DATA_DEVOLUCAO", nullable = false)
+    @Column(name = DATA_DEVOLUCAO, nullable = false)
     private LocalDateTime dtDevolucao;
 
     @Override
