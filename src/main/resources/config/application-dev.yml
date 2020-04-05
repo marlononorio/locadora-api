@@ -37,9 +37,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/locadorapassatempoapi
+    url: jdbc:postgresql://localhost:5432/locadorapassatempoapi?createDatabaseIfNotExist=true
     username: locadorapassatempoapi
-    password:
+    password: locadorapassatempoapi
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -54,7 +54,8 @@ spring:
       hibernate.generate_statistics: false
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+    contexts: dev
+    change-log: classpath:/config/liquibase/master.xml
   mail:
     host: localhost
     port: 25

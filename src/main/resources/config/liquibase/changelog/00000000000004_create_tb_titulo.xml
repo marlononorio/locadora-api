@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="marlon.onorio" id="1">
+        <createTable tableName="TB_TITULO">
+
+            <column name="ID_TITULO" type="NUMBER(19, 0)" remarks="Identificador do titulo">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="NOME" type="VARCHAR(40)" remarks="nome">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="SINOPSE" type="VARCHAR(80)" remarks="sinopse">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="CATEGORIA" type="VARCHAR(40)" remarks="categoria">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="ATOR_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" foreignKeyName="FK_TB_TITULO_TB_ATOR" references="TB_ATOR(ID_ATOR)"/>
+            </column>
+
+            <column name="DIRETOR_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" foreignKeyName="FK_TB_TITULO_TB_DIRETOR" references="TB_DIRETOR(ID_DIRETOR)"/>
+            </column>
+
+            <column name="CLASSE_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" foreignKeyName="FK_TB_TITULO_TB_CLASSE" references="TB_CLASSE(ID_CLASSE)"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="SQ_TITULO"
+                        startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

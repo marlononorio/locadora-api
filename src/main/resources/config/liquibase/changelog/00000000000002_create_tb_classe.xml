@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="marlon.onorio" id="1">
+        <createTable tableName="TB_CLASSE">
+
+            <column name="ID_CLASSE" type="NUMBER(19, 0)" remarks="Identificador da classe">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="NOME" type="VARCHAR(40)" remarks="Nome da classe">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VALOR" type="NUMBER(5, 2)" remarks="valor">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DATA_DEVOLUCAO" type="timestamp" remarks="Data de devolucao">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="SQ_CLASSE"
+                        startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

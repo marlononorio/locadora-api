@@ -6,6 +6,6 @@ services:
     #     - ~/volumes/jhipster/locadorapassatempoapi/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=locadorapassatempoapi
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=locadorapassatempoapi
     ports:
       - 5432:5432

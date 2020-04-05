@@ -49,10 +49,6 @@ public class Locacao implements Serializable {
     @JoinColumn(name = "ID_ITEM", nullable = false)
     private Item item;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_CLIENTE", nullable = false)
-    private Cliente cliente;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

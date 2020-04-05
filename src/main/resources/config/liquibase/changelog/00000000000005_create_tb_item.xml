@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="marlon.onorio" id="1">
+        <createTable tableName="TB_ITEM">
+
+            <column name="ID_ITEM" type="NUMBER(19, 0)" remarks="Identificador do item">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="DATA_AQUISICAO" type="timestamp" remarks="Data da aquisicao">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TIPO" type="VARCHAR(40)" remarks="tipo">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="TITULO_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" foreignKeyName="FK_TB_ITEM_TB_TITULO" references="TB_TITULO(ID_TITULO)"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="SQ_ITEM"
+                        startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>

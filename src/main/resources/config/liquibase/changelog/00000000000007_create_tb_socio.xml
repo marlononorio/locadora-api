@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="marlon.onorio" id="1">
+        <createTable tableName="TB_SOCIO">
+
+            <column name="ID_SOCIO" type="NUMBER(19, 0)" remarks="Identificador do socio">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="NOME" type="VARCHAR(40)" remarks="nome do socio">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CPF" type="VARCHAR(11)" remarks="cpf do socio">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ENDERECO" type="VARCHAR(40)" remarks="endereco">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="TELEFONE" type="VARCHAR(13)" remarks="endereco">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="DATA_NASCIMENTO" type="timestamp" remarks="Data do nascimento">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="SEXO" type="VARCHAR(1)" remarks="endereco">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="SITUACAO" type="boolean" remarks="Situacao do socio">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="LOCACAO_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" foreignKeyName="FK_TB_SOCIO_TB_LOCACAO" references="TB_LOCACAO(ID_LOCACAO)"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="SQ_SOCIO"
+                        startValue="1" incrementBy="1"/>
+    </changeSet>
+</databaseChangeLog>
