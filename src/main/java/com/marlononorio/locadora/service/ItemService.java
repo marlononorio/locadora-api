@@ -35,6 +35,6 @@ public class ItemService {
     }
 
     public Page<ItemListDTO> findByFilter(ItemListDTO dto, Pageable pageable) {
-        return itemRepository.findByFilter(dto, pageable);
+        return itemRepository.findAll(pageable).map(itemMapper::toListDto);
     }
 }

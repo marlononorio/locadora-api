@@ -3,6 +3,7 @@ package com.marlononorio.locadora.service;
 import com.marlononorio.locadora.domain.Diretor;
 import com.marlononorio.locadora.repository.DiretorRepository;
 import com.marlononorio.locadora.service.dto.DiretorDTO;
+import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.DiretorMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,5 +48,10 @@ public class DiretorService {
     @Transactional(readOnly = true)
     public Page<DiretorDTO> findByFilter(DiretorDTO dto, Pageable pageable) {
         return diretorRepository.findByFilter(dto, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ValueLabelDTO> findDescricao(){
+        return diretorRepository.findDescricao();
     }
 }
