@@ -1,8 +1,7 @@
-package com.marlononorio.locadora.service.impl;
+package com.marlononorio.locadora.service;
 
 import com.marlononorio.locadora.domain.Diretor;
 import com.marlononorio.locadora.repository.DiretorRepository;
-import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.DiretorDTO;
 import com.marlononorio.locadora.service.mapper.DiretorMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +17,13 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class DiretorServiceImpl implements BaseService<DiretorDTO> {
+public class DiretorService {
 
-    private final Logger log = LoggerFactory.getLogger(AtorServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(AtorService.class);
 
     private final DiretorRepository diretorRepository;
     private final DiretorMapper diretorMapper;
 
-    @Override
     public DiretorDTO save(DiretorDTO diretor) {
         log.debug("Request to save Ncm : {}", diretor);
         Diretor entity = diretorMapper.toEntity(diretor);
@@ -33,13 +31,11 @@ public class DiretorServiceImpl implements BaseService<DiretorDTO> {
         return diretorMapper.toDto(entity);
     }
 
-    @Override
     public void delete(Long id) {
         log.debug("Request to delete Diretor : {}", id);
         diretorRepository.deleteById(id);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Optional<DiretorDTO> findById(Long id) {
         log.debug("Request to get Diretor : {}", id);
@@ -47,7 +43,6 @@ public class DiretorServiceImpl implements BaseService<DiretorDTO> {
             .map(diretorMapper::toDto);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Page<DiretorDTO> findByFilter(DiretorDTO dto, Pageable pageable) {
         return diretorRepository.findByFilter(dto, pageable);

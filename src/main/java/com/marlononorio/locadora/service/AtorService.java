@@ -1,8 +1,7 @@
-package com.marlononorio.locadora.service.impl;
+package com.marlononorio.locadora.service;
 
 import com.marlononorio.locadora.domain.Ator;
 import com.marlononorio.locadora.repository.AtorRepository;
-import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.AtorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.AtorMapper;
@@ -20,14 +19,13 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class AtorServiceImpl implements BaseService<AtorDTO> {
+public class AtorService {
 
-    private final Logger log = LoggerFactory.getLogger(AtorServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(AtorService.class);
 
     private final AtorRepository atorRepository;
     private final AtorMapper atorMapper;
 
-    @Override
     public AtorDTO save(AtorDTO ator) {
         log.debug("Request to save Ator : {}", ator);
         Ator entity = atorMapper.toEntity(ator);
@@ -35,13 +33,11 @@ public class AtorServiceImpl implements BaseService<AtorDTO> {
         return atorMapper.toDto(entity);
     }
 
-    @Override
     public void delete(Long id) {
         log.debug("Request to delete Ator : {}", id);
         atorRepository.deleteById(id);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Optional<AtorDTO> findById(Long id) {
         log.debug("Request to get Ator : {}", id);
@@ -49,13 +45,11 @@ public class AtorServiceImpl implements BaseService<AtorDTO> {
             .map(atorMapper::toDto);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Page<AtorDTO> findByFilter(AtorDTO dto, Pageable pageable) {
         return atorRepository.findByFilter(dto, pageable);
     }
 
-    @Override
     public List<ValueLabelDTO> findDescricao(){
         return atorRepository.findDescricao();
     }

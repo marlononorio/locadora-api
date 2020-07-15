@@ -1,6 +1,6 @@
 package com.marlononorio.locadora.web.rest;
 
-import com.marlononorio.locadora.service.BaseService;
+import com.marlononorio.locadora.service.DiretorService;
 import com.marlononorio.locadora.service.dto.DiretorDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
@@ -24,7 +24,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DiretorResource {
 
-    private final BaseService<DiretorDTO> diretorService;
+    private final DiretorService diretorService;
 
     @PostMapping("/filter")
     public ResponseEntity<Page<DiretorDTO>> listar(@RequestBody DiretorDTO dto, @ApiParam Pageable pageable) {

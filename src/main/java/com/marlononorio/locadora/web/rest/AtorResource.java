@@ -1,6 +1,6 @@
 package com.marlononorio.locadora.web.rest;
 
-import com.marlononorio.locadora.service.BaseService;
+import com.marlononorio.locadora.service.AtorService;
 import com.marlononorio.locadora.service.dto.AtorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -28,7 +28,7 @@ import java.util.Optional;
 @Slf4j
 public class AtorResource {
 
-    private final BaseService<AtorDTO> atorService;
+    private final AtorService atorService;
 
     @PostMapping("/filter")
     public ResponseEntity<Page<AtorDTO>> listar(@RequestBody AtorDTO dto, @ApiParam Pageable pageable) {

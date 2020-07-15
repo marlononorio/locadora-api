@@ -1,10 +1,11 @@
-package com.marlononorio.locadora.service.impl;
+package com.marlononorio.locadora.service;
 
 import com.marlononorio.locadora.domain.Titulo;
 import com.marlononorio.locadora.repository.TituloRepository;
-import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.TituloDTO;
+import com.marlononorio.locadora.service.dto.TituloListDTO;
 import com.marlononorio.locadora.service.mapper.TituloMapper;
+import com.marlononorio.locadora.web.rest.errors.BadRequestAlertException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -18,31 +19,40 @@ import java.util.Optional;
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class TituloServiceImpl implements BaseService<TituloDTO> {
+public class TituloService {
 
     private final TituloRepository tituloRepository;
     private final TituloMapper tituloMapper;
+    private final ItemService itemService;
 
-    @Override
-    public TituloDTO save(TituloDTO titulo) {
+    public void save(TituloDTO titulo) {
         log.debug("Request to save Titulo: {}", titulo.getId());
         Titulo entity = tituloMapper.toEntity(titulo);
-        entity = tituloRepository.save(entity);
-        return tituloMapper.toDto(entity);
+        relacionamento(entity);
     }
 
-    @Override
+    public void relacionamento(Titulo entity) {
+        entity.getAtores().forEach(atores -> {
+            atores.setId(entity.getId());
+            atores.setNome(entity.getNome());
+        });
+
+        tituloRepository.saveAndFlush(entity);
+    }
+
     public void delete(Long id) {
+        if(!itemService.existsItemByTituloId(id)) {
+            throw new BadRequestAlertException("O Titulo selecionado está vinculado a um Item", "Título", "Titulo");
+        }
 
+        tituloRepository.deleteById(id);
     }
 
-    @Override
     public Optional<TituloDTO> findById(Long id) {
         return Optional.empty();
     }
 
-    @Override
-    public Page<TituloDTO> findByFilter(TituloDTO dto, Pageable pageable) {
+    public Page<TituloListDTO> findByFilter(TituloListDTO dto, Pageable pageable) {
         return tituloRepository.findByFilter(dto, pageable);
     }
 }

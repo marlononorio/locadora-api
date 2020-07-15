@@ -1,8 +1,7 @@
-package com.marlononorio.locadora.service.impl;
+package com.marlononorio.locadora.service;
 
 import com.marlononorio.locadora.domain.Classe;
 import com.marlononorio.locadora.repository.ClasseRepository;
-import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.ClasseMapper;
@@ -20,14 +19,13 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ClasseServiceImpl implements BaseService<ClasseDTO> {
+public class ClasseService {
 
-    private final Logger log = LoggerFactory.getLogger(AtorServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(AtorService.class);
 
     private final ClasseRepository classeRepository;
     private final ClasseMapper classeMapper;
 
-    @Override
     public ClasseDTO save(ClasseDTO dto) {
         log.debug("Request to save Classe : {}", dto);
         Classe entity = classeMapper.toEntity(dto);
@@ -35,13 +33,11 @@ public class ClasseServiceImpl implements BaseService<ClasseDTO> {
         return classeMapper.toDto(entity);
     }
 
-    @Override
     public void delete(Long id) {
         log.debug("Request to delete Classe : {}", id);
         classeRepository.deleteById(id);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Optional<ClasseDTO> findById(Long id) {
         log.debug("Request to get Classe : {}", id);
@@ -49,13 +45,11 @@ public class ClasseServiceImpl implements BaseService<ClasseDTO> {
             .map(classeMapper::toDto);
     }
 
-    @Override
     @Transactional(readOnly = true)
     public Page<ClasseDTO> findByFilter(ClasseDTO dto, Pageable pageable) {
         return classeRepository.findByFilter(dto, pageable);
     }
 
-    @Override
     public List<ValueLabelDTO> findDescricao(){
         return classeRepository.findDescricao();
     }

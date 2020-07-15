@@ -1,6 +1,6 @@
 package com.marlononorio.locadora.web.rest;
 
-import com.marlononorio.locadora.service.BaseService;
+import com.marlononorio.locadora.service.ClasseService;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -26,7 +26,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ClasseResource {
 
-    private final BaseService<ClasseDTO> classeService;
+    private final ClasseService classeService;
 
     @PostMapping("/filter")
     public ResponseEntity<Page<ClasseDTO>> findByFilter(@RequestBody ClasseDTO dto, @ApiParam Pageable pageable) {

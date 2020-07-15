@@ -1,7 +1,8 @@
 package com.marlononorio.locadora.web.rest;
 
-import com.marlononorio.locadora.service.BaseService;
+import com.marlononorio.locadora.service.TituloService;
 import com.marlononorio.locadora.service.dto.TituloDTO;
+import com.marlononorio.locadora.service.dto.TituloListDTO;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TituloResource {
 
-    private final BaseService<TituloDTO> tituloService;
+    private final TituloService tituloService;
 
     @PostMapping("/filter")
-    public ResponseEntity<Page<TituloDTO>> findByFilter(@RequestBody TituloDTO dto, @ApiParam Pageable pageable) {
-        Page<TituloDTO> titulo = tituloService.findByFilter(dto, pageable);
+    public ResponseEntity<Page<TituloListDTO>> findByFilter(@RequestBody TituloListDTO dto, @ApiParam Pageable pageable) {
+        Page<TituloListDTO> titulo = tituloService.findByFilter(dto, pageable);
         return new ResponseEntity<>(titulo, HttpStatus.OK);
     }
 
