@@ -1,8 +1,11 @@
 package com.marlononorio.locadora.service;
 
+import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface BaseService<T> {
@@ -13,5 +16,9 @@ public interface BaseService<T> {
 
     Optional<T> findById(Long id);
 
-    Page<T> findAll(T dto, Pageable pageable);
+    Page<T> findByFilter(T dto, Pageable pageable);
+
+    default List<ValueLabelDTO> findDescricao() {
+        throw new NotImplementedException();
+    }
 }

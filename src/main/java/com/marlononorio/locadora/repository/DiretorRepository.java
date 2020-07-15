@@ -12,6 +12,6 @@ import org.springframework.data.repository.query.Param;
 public interface DiretorRepository extends JpaRepository<Diretor, Long>, JpaSpecificationExecutor<Diretor> {
 
     @Query("SELECT new com.marlononorio.locadora.service.dto.DiretorDTO(d.id, d.nome) FROM Diretor d " +
-        " WHERE (:#{#filtro.nome} IS NULL OR LOWER(d.nome) LIKE LOWER(CONCAT(CONCAT('%', :#{#filtro.nome}), '%')))")
+        " WHERE (:#{#filtro.nome} is null or (:#{#filtro.nome}) like(concat('%',d.nome,'%')))")
     Page<DiretorDTO> findByFilter(@Param("filtro") DiretorDTO dto, Pageable pageable);
 }

@@ -4,6 +4,7 @@ import com.marlononorio.locadora.domain.Classe;
 import com.marlononorio.locadora.repository.ClasseRepository;
 import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
+import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.ClasseMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,7 +51,12 @@ public class ClasseServiceImpl implements BaseService<ClasseDTO> {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<ClasseDTO> findAll(ClasseDTO dto, Pageable pageable) {
+    public Page<ClasseDTO> findByFilter(ClasseDTO dto, Pageable pageable) {
         return classeRepository.findByFilter(dto, pageable);
+    }
+
+    @Override
+    public List<ValueLabelDTO> findDescricao(){
+        return classeRepository.findDescricao();
     }
 }

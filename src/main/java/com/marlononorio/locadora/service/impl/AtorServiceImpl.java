@@ -4,6 +4,7 @@ import com.marlononorio.locadora.domain.Ator;
 import com.marlononorio.locadora.repository.AtorRepository;
 import com.marlononorio.locadora.service.BaseService;
 import com.marlononorio.locadora.service.dto.AtorDTO;
+import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.AtorMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,7 +51,12 @@ public class AtorServiceImpl implements BaseService<AtorDTO> {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<AtorDTO> findAll(AtorDTO dto, Pageable pageable) {
+    public Page<AtorDTO> findByFilter(AtorDTO dto, Pageable pageable) {
         return atorRepository.findByFilter(dto, pageable);
+    }
+
+    @Override
+    public List<ValueLabelDTO> findDescricao(){
+        return atorRepository.findDescricao();
     }
 }

@@ -49,7 +49,7 @@ public class DiretorServiceImpl implements BaseService<DiretorDTO> {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<DiretorDTO> findAll(DiretorDTO dto, Pageable pageable) {
+    public Page<DiretorDTO> findByFilter(DiretorDTO dto, Pageable pageable) {
         return diretorRepository.findByFilter(dto, pageable);
     }
 }

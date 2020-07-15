@@ -5,5 +5,8 @@ import com.marlononorio.locadora.service.dto.DiretorDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface DiretorMapper extends BaseMapper<Diretor, DiretorDTO>{
+public interface DiretorMapper {
+
+    Diretor toEntity(DiretorDTO dto);
+    DiretorDTO toDto(Diretor entity);
 }
