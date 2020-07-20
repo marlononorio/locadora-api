@@ -6,8 +6,7 @@ import com.marlononorio.locadora.service.dto.AtorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.AtorMapper;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,8 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class AtorService {
-
-    private final Logger log = LoggerFactory.getLogger(AtorService.class);
 
     private final AtorRepository atorRepository;
     private final AtorMapper atorMapper;

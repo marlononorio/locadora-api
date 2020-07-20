@@ -41,17 +41,4 @@ public class Classe implements Serializable {
 
     @Column(name = DATA_DEVOLUCAO, nullable = false)
     private LocalDateTime dtDevolucao;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Classe classe = (Classe) o;
-        return Objects.equals(id, classe.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

@@ -7,34 +7,42 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet author="marlon.onorio" id="1">
-        <createTable tableName="TB_LOCACAO">
+        <createTable tableName="TB_SOCIO">
 
-            <column name="ID_LOCACAO" type="NUMBER(19, 0)" remarks="Identificador da locacao">
+            <column name="ID_SOCIO" type="NUMBER(19, 0)" remarks="Identificador do socio">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="DATA_LOCACAO" type="timestamp" remarks="Data da locacao">
+            <column name="NOME" type="VARCHAR(40)" remarks="nome do socio">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="DATA_DEVOLUCAO_PREVISTA" type="timestamp" remarks="Data da devolucao prevista">
+            <column name="CPF" type="VARCHAR(11)" remarks="cpf do socio">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="DATA_DEVOLUCAO_EFETIVA" type="timestamp" remarks="Data da devolucao efetiva">
+            <column name="ENDERECO" type="VARCHAR(40)" remarks="endereco">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="TELEFONE" type="VARCHAR(13)" remarks="endereco">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="DATA_NASCIMENTO" type="timestamp" remarks="Data do nascimento">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="VALOR_COBRADO" type="NUMBER(5, 2)" remarks="Valor cobrado">
+            <column name="SEXO" type="VARCHAR(1)" remarks="endereco">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="ITEM_ID" type="NUMBER(19, 0)">
-                <constraints nullable="false" foreignKeyName="FK_TB_LOCACAO_TB_ITEM" references="TB_ITEM(ID_ITEM)"/>
+            <column name="STATUS" type="boolean" remarks="Situacao do socio">
+                <constraints nullable="false"/>
             </column>
         </createTable>
 
-        <createSequence sequenceName="SQ_LOCACAO"
+        <createSequence sequenceName="SQ_SOCIO"
                         startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

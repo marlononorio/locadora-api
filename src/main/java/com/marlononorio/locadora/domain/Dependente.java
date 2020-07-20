@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "TB_DEPENDENTE")
 public class Dependente extends Cliente{
 
-    private static final String ID_SOCIO = "ID_SOCIO";
+    private static final String ID_SOCIO = "SOCIO_ID";
     private static final String ID_DEPENDENTE = "ID_DEPENDENTE";
     private static final String SQ_DEPENDENTE = "SQ_DEPENDENTE";
 

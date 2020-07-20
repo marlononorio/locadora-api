@@ -35,8 +35,4 @@ public abstract class Cliente implements Serializable {
 
     @Column(name = STATUS)
     private Boolean status;
-
-    @OneToMany(cascade = CascadeType.ALL,
-        orphanRemoval = true)
-    private Set<Locacao> locacao;
 }

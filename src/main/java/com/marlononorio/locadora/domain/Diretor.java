@@ -32,17 +32,4 @@ public class Diretor implements Serializable {
 
     @Column(name = NOME, nullable = false)
     private String nome;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Diretor diretor = (Diretor) o;
-        return Objects.equals(id, diretor.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

@@ -6,6 +6,7 @@ import com.marlononorio.locadora.service.dto.DiretorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.DiretorMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -19,9 +20,8 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class DiretorService {
-
-    private final Logger log = LoggerFactory.getLogger(AtorService.class);
 
     private final DiretorRepository diretorRepository;
     private final DiretorMapper diretorMapper;

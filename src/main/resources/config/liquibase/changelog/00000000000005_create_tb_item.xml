@@ -13,6 +13,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
+            <column name="NUM_SERIE" type="VARCHAR2(10)" remarks="Número de série">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="DATA_AQUISICAO" type="timestamp" remarks="Data da aquisicao">
                 <constraints nullable="false"/>
             </column>

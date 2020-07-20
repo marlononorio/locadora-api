@@ -66,17 +66,4 @@ public class Titulo implements Serializable {
     @ManyToOne
     @JoinColumn(name = ID_CLASSE, nullable = false)
     private Classe classe;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Titulo titulo = (Titulo) o;
-        return Objects.equals(id, titulo.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

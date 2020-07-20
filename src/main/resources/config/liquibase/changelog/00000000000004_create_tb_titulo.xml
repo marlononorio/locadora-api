@@ -17,6 +17,10 @@
                 <constraints nullable="true"/>
             </column>
 
+            <column name="ANO" type="NUMBER(4)" remarks="ano">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="SINOPSE" type="VARCHAR(80)" remarks="sinopse">
                 <constraints nullable="true"/>
             </column>

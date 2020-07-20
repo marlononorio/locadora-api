@@ -57,16 +57,11 @@ public class Locacao implements Serializable {
     @JoinColumn(name = ID_ITEM, nullable = false)
     private Item item;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Locacao locacao = (Locacao) o;
-        return Objects.equals(id, locacao.id);
-    }
+    @ManyToOne
+    @JoinColumn(name = "ID_SOCIO")
+    private Socio socio;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+    @ManyToOne
+    @JoinColumn(name = "ID_DEPENDENTE")
+    private Dependente dependente;
 }
