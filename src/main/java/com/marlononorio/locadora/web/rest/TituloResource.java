@@ -24,8 +24,8 @@ public class TituloResource {
     private final TituloService tituloService;
 
     @PostMapping("/filter")
-    public ResponseEntity<Page<TituloListDTO>> findByFilter(@RequestBody TituloListDTO dto, @ApiParam Pageable pageable) {
-        Page<TituloListDTO> titulo = tituloService.findByFilter(dto, pageable);
+    public ResponseEntity<Page<TituloDTO>> findByFilter(@RequestBody TituloListDTO dto, @ApiParam Pageable pageable) {
+        Page<TituloDTO> titulo = tituloService.findByFilter(dto,pageable);
         return new ResponseEntity<>(titulo, HttpStatus.OK);
     }
 

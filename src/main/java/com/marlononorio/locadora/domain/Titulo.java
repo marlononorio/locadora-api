@@ -1,14 +1,10 @@
 package com.marlononorio.locadora.domain;
 
-import com.marlononorio.locadora.enumeration.TipoCategoriaEnum;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,8 +28,8 @@ public class Titulo implements Serializable {
     private static final String ANO = "ANO";
     private static final String SINOPSE = "SINOPSE";
     private static final String CATEGORIA = "CATEGORIA";
-    private static final String ID_DIRETOR = "ID_DIRETOR";
-    private static final String ID_CLASSE = "ID_CLASSE";
+    private static final String ID_DIRETOR = "DIRETOR_ID";
+    private static final String ID_CLASSE = "CLASSE_ID";
     private static final String SQ_TITULO = "SQ_TITULO";
 
     @Id
@@ -49,15 +44,15 @@ public class Titulo implements Serializable {
     @Column(name = ANO, nullable = false)
     private String ano;
 
-    @Column(name = SINOPSE, nullable = false)
+    @Column(name = SINOPSE)
     private String sinopse;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = CATEGORIA)
-    private TipoCategoriaEnum categoria;
+    private String categoria;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
-    private Set<Ator> atores;
+    @OneToMany
+    private List<Ator> atores;
 
     @ManyToOne
     @JoinColumn(name = ID_DIRETOR, nullable = false)

@@ -17,7 +17,7 @@
                 <constraints nullable="true"/>
             </column>
 
-            <column name="ANO" type="NUMBER(4)" remarks="ano">
+            <column name="ANO" type="VARCHAR(4)" remarks="ano">
                 <constraints nullable="true"/>
             </column>
 

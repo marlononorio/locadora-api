@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 @Service
@@ -28,7 +29,8 @@ public class TituloService {
     public void save(TituloDTO titulo) {
         log.debug("Request to save Titulo: {}", titulo.getId());
         Titulo entity = tituloMapper.toEntity(titulo);
-        relacionamento(entity);
+//        relacionamento(entity);
+        tituloRepository.saveAndFlush(entity);
     }
 
     public void relacionamento(Titulo entity) {
@@ -52,7 +54,12 @@ public class TituloService {
         return Optional.empty();
     }
 
-    public Page<TituloListDTO> findByFilter(TituloListDTO dto, Pageable pageable) {
-        return tituloRepository.findByFilter(dto, pageable);
+    public Page<TituloDTO> findByFilter(TituloListDTO dto, Pageable pageable) {
+        return tituloRepository.findAll(pageable).map(tituloMapper::toDto);
+    }
+
+    public boolean existsTituloById(Long id) {
+
+        return tituloRepository.existsTituloByAtoresIdIn(Arrays.asList(id));
     }
 }

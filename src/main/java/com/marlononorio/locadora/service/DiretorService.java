@@ -54,4 +54,8 @@ public class DiretorService {
     public List<ValueLabelDTO> findDescricao(){
         return diretorRepository.findDescricao();
     }
+
+    public List<DiretorDTO> dropdown() {
+        return diretorRepository.dropdown();
+    }
 }

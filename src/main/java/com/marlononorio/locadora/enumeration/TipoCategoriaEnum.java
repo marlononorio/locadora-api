@@ -19,4 +19,6 @@ public enum TipoCategoriaEnum {
     TipoCategoriaEnum(String descricao){
         this.descricao = descricao;
     }
+
+
 }

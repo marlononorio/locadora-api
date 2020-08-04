@@ -51,4 +51,8 @@ public class ClasseService {
     public List<ValueLabelDTO> findDescricao(){
         return classeRepository.findDescricao();
     }
+
+    public List<ClasseDTO> dropdown() {
+        return classeRepository.dropdown();
+    }
 }

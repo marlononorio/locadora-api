@@ -20,4 +20,7 @@ public interface ClasseRepository extends JpaRepository<Classe, Long>, JpaSpecif
 
     @Query("SELECT new com.marlononorio.locadora.service.dto.ValueLabelDTO(c.id, c.nome) FROM Classe c")
     List<ValueLabelDTO> findDescricao();
+
+    @Query("SELECT new com.marlononorio.locadora.service.dto.ClasseDTO(c.id, c.nome, c.valor, c.dtDevolucao) FROM Classe c")
+    List<ClasseDTO> dropdown();
 }

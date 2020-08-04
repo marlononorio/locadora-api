@@ -5,6 +5,7 @@ import com.marlononorio.locadora.repository.AtorRepository;
 import com.marlononorio.locadora.service.dto.AtorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.AtorMapper;
+import com.marlononorio.locadora.web.rest.errors.BadRequestAlertException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -23,6 +24,7 @@ public class AtorService {
 
     private final AtorRepository atorRepository;
     private final AtorMapper atorMapper;
+    private final TituloService tituloService;
 
     public AtorDTO save(AtorDTO ator) {
         log.debug("Request to save Ator : {}", ator);
@@ -33,6 +35,9 @@ public class AtorService {
 
     public void delete(Long id) {
         log.debug("Request to delete Ator : {}", id);
+//        if(tituloService.existsTituloById(id)) {
+//            throw new BadRequestAlertException("NAO FOI POSSIVEL EXCLUIR", "NAO FOI POSSIVEL EXCLUIR", "NAO FOI POSSIVEL EXCLUIR");
+//        }
         atorRepository.deleteById(id);
     }
 
@@ -50,5 +55,9 @@ public class AtorService {
 
     public List<ValueLabelDTO> findDescricao(){
         return atorRepository.findDescricao();
+    }
+
+    public List<AtorDTO> dropdown() {
+        return atorRepository.dropdown();
     }
 }

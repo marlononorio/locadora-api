@@ -2,6 +2,7 @@ package com.marlononorio.locadora.web.rest;
 
 import com.marlononorio.locadora.service.ClasseService;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
+import com.marlononorio.locadora.service.dto.DiretorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
@@ -56,5 +57,11 @@ public class ClasseResource {
     public ResponseEntity<List<ValueLabelDTO>> findAllClasseDescricao() {
         List<ValueLabelDTO> classes = classeService.findDescricao();
         return ResponseEntity.ok().body(classes);
+    }
+
+    @GetMapping("/dropdown")
+    public ResponseEntity<List<ClasseDTO>> dropdown(){
+        List<ClasseDTO> result = classeService.dropdown();
+        return ResponseEntity.ok().body(result);
     }
 }

@@ -22,4 +22,7 @@ public interface AtorRepository extends JpaRepository<Ator, Long> , JpaSpecifica
 
     @Query("SELECT new com.marlononorio.locadora.service.dto.ValueLabelDTO(a.id, a.nome) FROM Ator a")
     List<ValueLabelDTO> findDescricao();
+
+    @Query("SELECT new com.marlononorio.locadora.service.dto.AtorDTO(a.id, a.nome) FROM Ator a")
+    List<AtorDTO> dropdown();
 }

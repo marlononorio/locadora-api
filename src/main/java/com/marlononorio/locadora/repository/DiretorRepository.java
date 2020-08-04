@@ -20,4 +20,7 @@ public interface DiretorRepository extends JpaRepository<Diretor, Long>, JpaSpec
 
     @Query("SELECT new com.marlononorio.locadora.service.dto.ValueLabelDTO(d.id, d.nome) FROM Diretor d")
     List<ValueLabelDTO> findDescricao();
+
+    @Query("SELECT new com.marlononorio.locadora.service.dto.DiretorDTO(d.id, d.nome) FROM Diretor d")
+    List<DiretorDTO> dropdown();
 }

@@ -60,4 +60,10 @@ public class AtorResource {
         List<ValueLabelDTO> ator = atorService.findDescricao();
         return ResponseEntity.ok().body(ator);
     }
+
+    @GetMapping("/dropdown")
+    public ResponseEntity<List<AtorDTO>> dropdown() {
+        List<AtorDTO> ator = atorService.dropdown();
+        return ResponseEntity.ok().body(ator);
+    }
 }

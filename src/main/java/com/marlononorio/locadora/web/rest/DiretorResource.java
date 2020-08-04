@@ -57,4 +57,10 @@ public class DiretorResource {
         List<ValueLabelDTO> result = diretorService.findDescricao();
         return ResponseEntity.ok().body(result);
     }
+
+    @GetMapping("/dropdown")
+    public ResponseEntity<List<DiretorDTO>> dropdown(){
+        List<DiretorDTO> result = diretorService.dropdown();
+        return ResponseEntity.ok().body(result);
+    }
 }

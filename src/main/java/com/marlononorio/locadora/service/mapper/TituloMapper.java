@@ -8,11 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface TituloMapper {
 
-    @Mapping(target = "idDiretor", source = "diretor.id")
-    @Mapping(target = "idClasse", source = "classe.id")
     Titulo toEntity(TituloDTO dto);
 
-    @Mapping(target = "diretor.id", source = "idDiretor")
-    @Mapping(target = "classe.id", source = "idClasse")
     TituloDTO toDto(Titulo entity);
 }
