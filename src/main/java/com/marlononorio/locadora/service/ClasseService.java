@@ -5,6 +5,7 @@ import com.marlononorio.locadora.repository.ClasseRepository;
 import com.marlononorio.locadora.service.dto.ClasseDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.ClasseMapper;
+import com.marlononorio.locadora.web.rest.errors.BadRequestAlertException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -26,6 +27,9 @@ public class ClasseService {
 
     public ClasseDTO save(ClasseDTO dto) {
         log.debug("Request to save Classe : {}", dto);
+        if (classeRepository.existsClasseByNome(dto.getNome())){
+            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
+        }
         Classe entity = classeMapper.toEntity(dto);
         entity = classeRepository.save(entity);
         return classeMapper.toDto(entity);
@@ -54,5 +58,13 @@ public class ClasseService {
 
     public List<ClasseDTO> dropdown() {
         return classeRepository.dropdown();
+    }
+
+    public void update(ClasseDTO dto) {
+        if (classeRepository.existsClasseByNome(dto.getNome())){
+            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
+        }
+        Classe entity = classeMapper.toEntity(dto);
+        classeRepository.save(entity);
     }
 }

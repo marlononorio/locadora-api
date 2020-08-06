@@ -5,10 +5,9 @@ import com.marlononorio.locadora.repository.DiretorRepository;
 import com.marlononorio.locadora.service.dto.DiretorDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.DiretorMapper;
+import com.marlononorio.locadora.web.rest.errors.BadRequestAlertException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,6 +27,10 @@ public class DiretorService {
 
     public DiretorDTO save(DiretorDTO diretor) {
         log.debug("Request to save Ncm : {}", diretor);
+
+        if(diretorRepository.existsDiretorByNome(diretor.getNome())) {
+            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
+        }
         Diretor entity = diretorMapper.toEntity(diretor);
         entity = diretorRepository.save(entity);
         return diretorMapper.toDto(entity);
@@ -57,5 +60,13 @@ public class DiretorService {
 
     public List<DiretorDTO> dropdown() {
         return diretorRepository.dropdown();
+    }
+
+    public void update(DiretorDTO dto) {
+        if (diretorRepository.existsDiretorByNome(dto.getNome())){
+            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
+        }
+        Diretor entity = diretorMapper.toEntity(dto);
+        diretorRepository.save(entity);
     }
 }

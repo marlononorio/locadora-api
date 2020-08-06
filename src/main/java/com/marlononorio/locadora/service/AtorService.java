@@ -60,4 +60,12 @@ public class AtorService {
     public List<AtorDTO> dropdown() {
         return atorRepository.dropdown();
     }
+
+    public void update(AtorDTO dto) {
+        if (atorRepository.existsAtorByIdAndNome(dto.getId(), dto.getNome())){
+            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
+        }
+        Ator entity = atorMapper.toEntity(dto);
+        atorRepository.save(entity);
+    }
 }
