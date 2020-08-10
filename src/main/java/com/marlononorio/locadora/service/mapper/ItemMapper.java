@@ -12,7 +12,9 @@ public interface ItemMapper{
     @Mapping(source = "entity.titulo.nome", target = "titulo")
     ItemListDTO toListDto(Item entity);
 
+    @Mapping(target = "titulo", source = "titulo.id")
     ItemDTO toDto(Item entity);
 
-    Item toEntity(ItemDTO entity);
+    @Mapping(source = "titulo", target = "titulo.id")
+    Item toEntity(ItemDTO dto);
 }

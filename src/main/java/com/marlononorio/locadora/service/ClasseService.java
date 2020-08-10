@@ -61,9 +61,6 @@ public class ClasseService {
     }
 
     public void update(ClasseDTO dto) {
-        if (classeRepository.existsClasseByNome(dto.getNome())){
-            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
-        }
         Classe entity = classeMapper.toEntity(dto);
         classeRepository.save(entity);
     }

@@ -2,6 +2,7 @@ package com.marlononorio.locadora.web.rest;
 
 import com.marlononorio.locadora.service.AtorService;
 import com.marlononorio.locadora.service.dto.AtorDTO;
+import com.marlononorio.locadora.service.dto.AtorListDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
@@ -57,8 +58,8 @@ public class AtorResource {
     }
 
     @GetMapping("/descricao")
-    public ResponseEntity<List<ValueLabelDTO>> findAllClasseDescricao() {
-        List<ValueLabelDTO> ator = atorService.findDescricao();
+    public ResponseEntity<List<AtorListDTO>> findDescricao() {
+        List<AtorListDTO> ator = atorService.findDescricao();
         return ResponseEntity.ok().body(ator);
     }
 

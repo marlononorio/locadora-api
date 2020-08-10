@@ -20,6 +20,7 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
     private final ItemMapper itemMapper;
+    private final TituloService tituloService;
 
     public Boolean existsItemByTituloId(Long id) {
         return itemRepository.existsItemByTituloId(id);
@@ -32,9 +33,17 @@ public class ItemService {
     }
 
     public void delete(Long id) {
+        itemRepository.deleteById(id);
     }
 
-    public Page<ItemListDTO> findByFilter(ItemListDTO dto, Pageable pageable) {
+    public Page<ItemListDTO> findByFilter(Pageable pageable) {
         return itemRepository.findAll(pageable).map(itemMapper::toListDto);
+    }
+
+    public void update(ItemDTO itemDTO) {
+
+        Item entity = itemMapper.toEntity(itemDTO);
+        entity.setTitulo(tituloService.findById(itemDTO.getTitulo()));
+        itemRepository.saveAndFlush(entity);
     }
 }

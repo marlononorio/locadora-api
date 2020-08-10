@@ -1,20 +1,24 @@
 package com.marlononorio.locadora.web.rest;
 
 import com.marlononorio.locadora.service.TituloService;
+import com.marlononorio.locadora.service.dto.AtorListDTO;
 import com.marlononorio.locadora.service.dto.TituloDTO;
 import com.marlononorio.locadora.service.dto.TituloListDTO;
-import io.swagger.annotations.ApiParam;
+import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/titulos")
@@ -24,7 +28,7 @@ public class TituloResource {
     private final TituloService tituloService;
 
     @PostMapping("/filter")
-    public ResponseEntity<Page<TituloDTO>> findByFilter(@RequestBody TituloListDTO dto, @ApiParam Pageable pageable) {
+    public ResponseEntity<Page<TituloDTO>> findByFilter(@RequestBody TituloListDTO dto, Pageable pageable) {
         Page<TituloDTO> titulo = tituloService.findByFilter(dto,pageable);
         return new ResponseEntity<>(titulo, HttpStatus.OK);
     }
@@ -39,5 +43,11 @@ public class TituloResource {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         tituloService.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/descricao")
+    public ResponseEntity<List<ValueLabelDTO>> findDescricao() {
+        List<ValueLabelDTO> titulo = tituloService.findDescricao();
+        return ResponseEntity.ok().body(titulo);
     }
 }

@@ -3,6 +3,7 @@ package com.marlononorio.locadora.service;
 import com.marlononorio.locadora.domain.Ator;
 import com.marlononorio.locadora.repository.AtorRepository;
 import com.marlononorio.locadora.service.dto.AtorDTO;
+import com.marlononorio.locadora.service.dto.AtorListDTO;
 import com.marlononorio.locadora.service.dto.ValueLabelDTO;
 import com.marlononorio.locadora.service.mapper.AtorMapper;
 import com.marlononorio.locadora.web.rest.errors.BadRequestAlertException;
@@ -24,7 +25,6 @@ public class AtorService {
 
     private final AtorRepository atorRepository;
     private final AtorMapper atorMapper;
-    private final TituloService tituloService;
 
     public AtorDTO save(AtorDTO ator) {
         log.debug("Request to save Ator : {}", ator);
@@ -53,7 +53,7 @@ public class AtorService {
         return atorRepository.findByFilter(dto, pageable);
     }
 
-    public List<ValueLabelDTO> findDescricao(){
+    public List<AtorListDTO> findDescricao(){
         return atorRepository.findDescricao();
     }
 

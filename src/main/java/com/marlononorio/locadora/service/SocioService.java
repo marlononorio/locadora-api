@@ -1,9 +1,7 @@
 package com.marlononorio.locadora.service;
 
-import com.marlononorio.locadora.domain.Diretor;
 import com.marlononorio.locadora.domain.Socio;
 import com.marlononorio.locadora.repository.SocioRepository;
-import com.marlononorio.locadora.service.dto.DiretorDTO;
 import com.marlononorio.locadora.service.dto.SocioDTO;
 import com.marlononorio.locadora.service.dto.SocioListDTO;
 import com.marlononorio.locadora.service.mapper.SocioMapper;
@@ -47,9 +45,6 @@ public class SocioService {
     }
 
     public void update(SocioDTO dto) {
-        if (socioRepository.existsSocioByNome(dto.getNome())){
-            throw new BadRequestAlertException("Registro já existe", "Registro já existe", "Registro já existe");
-        }
         socioRepository.update(dto);
     }
 }

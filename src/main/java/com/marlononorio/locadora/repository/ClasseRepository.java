@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ClasseRepository extends JpaRepository<Classe, Long>, JpaSpecificationExecutor<Classe> {
@@ -23,6 +24,8 @@ public interface ClasseRepository extends JpaRepository<Classe, Long>, JpaSpecif
 
     @Query("SELECT new com.marlononorio.locadora.service.dto.ClasseDTO(c.id, c.nome, c.valor, c.dtDevolucao) FROM Classe c")
     List<ClasseDTO> dropdown();
+
+    Boolean existsByNomeAndDtDevolucaoAndValor(String nome, LocalDateTime dtDevolucao, Double valor);
 
     Boolean existsClasseByNome(String nome);
 }

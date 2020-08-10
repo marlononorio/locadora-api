@@ -3,12 +3,16 @@ package com.marlononorio.locadora.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -19,7 +23,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "TB_TITULO")
+@Table(name="TB_TITULO")
 public class Titulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,8 +32,8 @@ public class Titulo implements Serializable {
     private static final String ANO = "ANO";
     private static final String SINOPSE = "SINOPSE";
     private static final String CATEGORIA = "CATEGORIA";
-    private static final String ID_DIRETOR = "DIRETOR_ID";
-    private static final String ID_CLASSE = "CLASSE_ID";
+    private static final String ID_DIRETOR = "ID_DIRETOR";
+    private static final String ID_CLASSE = "ID_CLASSE";
     private static final String SQ_TITULO = "SQ_TITULO";
 
     @Id
@@ -47,18 +51,20 @@ public class Titulo implements Serializable {
     @Column(name = SINOPSE)
     private String sinopse;
 
-//    @Enumerated(EnumType.STRING)
     @Column(name = CATEGORIA)
     private String categoria;
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "TB_TITULO_ATOR",
+        joinColumns = @JoinColumn(name = "ID_TITULO", referencedColumnName = "ID_TITULO"),
+        inverseJoinColumns = @JoinColumn(name = "ID_ATOR", referencedColumnName = "ID_ATOR"))
     private List<Ator> atores;
 
     @ManyToOne
-    @JoinColumn(name = ID_DIRETOR, nullable = false)
+    @JoinColumn(name = "DIRETOR_ID", nullable = false)
     private Diretor diretor;
 
     @ManyToOne
-    @JoinColumn(name = ID_CLASSE, nullable = false)
+    @JoinColumn(name = "CLASSE_ID", nullable = false)
     private Classe classe;
 }

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class ItemResource {
 
     @PostMapping("/filter")
     public ResponseEntity<Page<ItemListDTO>> findByFilter(@RequestBody ItemListDTO dto, Pageable pageable) {
-        Page<ItemListDTO> itens = itemService.findByFilter(dto, pageable);
+        Page<ItemListDTO> itens = itemService.findByFilter(pageable);
         return new ResponseEntity<>(itens, HttpStatus.OK);
     }
 
@@ -40,5 +41,11 @@ public class ItemResource {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         itemService.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> update(@RequestBody ItemDTO itemDTO) {
+        itemService.save(itemDTO);
+        return ResponseEntity.noContent().build();
     }
 }

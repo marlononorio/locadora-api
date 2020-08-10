@@ -12,5 +12,6 @@ public class ItemDTO {
     private Long id;
     private LocalDateTime dtAquisicao;
     private String tipo;
-    private Long idTitulo;
+    private String numeroSerie;
+    private Long titulo;
 }

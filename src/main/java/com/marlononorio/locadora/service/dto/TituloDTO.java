@@ -21,8 +21,8 @@ public class TituloDTO implements Serializable {
     private String nome;
     private String ano;
     private String categoria;
-    private Diretor diretor;
-    private Classe classe;
+    private Long idDiretor;
+    private Long idClasse;
     private String sinopse;
-    List<Ator> atores;
+    List<AtorDTO> atores;
 }

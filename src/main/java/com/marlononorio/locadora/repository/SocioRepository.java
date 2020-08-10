@@ -17,9 +17,7 @@ public interface SocioRepository extends JpaRepository<Socio, Long> {
     @Query("SELECT new com.marlononorio.locadora.service.dto.SocioListDTO(s.id, s.nome, s.endereco, s.telefone, s.sexo, s.cpf, s.dtNascimento) FROM Socio s")
     Page<SocioListDTO> findAllSocios(Pageable pageable);
 
-    Boolean existsSocioByNome(String nome);
-
-    @Query("UPDATE Socio s SET s.nome = :#{#dto.nome}, s.endereco = :#{#dto.nome}, " +
+    @Query("UPDATE Socio s SET s.nome = :#{#dto.nome}, s.endereco = :#{#dto.endereco}, " +
         "s.telefone = :#{#dto.telefone}, s.sexo = :#{#dto.sexo}, s.cpf = :#{#dto.cpf}, " +
         "s.dtNascimento = :#{#dto.dtNascimento} " +
         "WHERE s.id = :#{#dto.id}")

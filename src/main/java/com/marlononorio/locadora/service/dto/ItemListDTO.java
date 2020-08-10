@@ -16,6 +16,7 @@ public class ItemListDTO {
     private String titulo;
     private LocalDateTime dtAquisicao;
     private String tipo;
+    private String numeroSerie;
 
     public ItemListDTO(Long id, String titulo, LocalDateTime dtAquisicao, TipoItemEnum tipo) {
         this.id = id;

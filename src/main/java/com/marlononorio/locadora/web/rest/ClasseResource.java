@@ -66,7 +66,7 @@ public class ClasseResource {
     }
 
     @PutMapping
-    public ResponseEntity<Void> updateAtor(@RequestBody ClasseDTO dto) {
+    public ResponseEntity<Void> updateClasse(@RequestBody ClasseDTO dto) {
         classeService.update(dto);
         return ResponseEntity.noContent().build();
     }

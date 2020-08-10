@@ -5,5 +5,9 @@ import com.marlononorio.locadora.service.dto.AtorDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface AtorMapper extends BaseMapper<Ator, AtorDTO>{
+public interface AtorMapper {
+
+    Ator toEntity(AtorDTO dto);
+
+    AtorDTO toDto(Ator entity);
 }
